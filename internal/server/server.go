@@ -6,7 +6,7 @@ import "github.com/gorilla/websocket"
 
 import "karaoke/internal/commands"
 
-type RemoteCommand struct {
+type remoteCommand struct {
 	Command   string
 	Arguments interface{}
 }
@@ -15,6 +15,26 @@ var upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
+func processCommand(ws *websocket.Conn) {
+	var command remoteCommand
+	err := ws.ReadJSON(&command)
+
+	if err != nil {
+		log.Println("failed to parse message:", err)
+		return
+	}
+
+	var response interface{}
+
+	switch command.Command {
+	case "list_songs":
+		response = commands.ListSongs()
+	}
+
+	ws.WriteJSON(response)
+}
+
+//ServeWs will respond to websocket requests
 func ServeWs(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
 
@@ -26,21 +46,6 @@ func ServeWs(w http.ResponseWriter, r *http.Request) {
 	defer ws.Close()
 
 	for {
-		var remoteCommand RemoteCommand
-		err := ws.ReadJSON(&remoteCommand)
-
-		if err != nil {
-			log.Println("failed to parse message:", err)
-			continue
-		}
-
-		var response interface{};
-
-		switch remoteCommand.Command {
-		case "list_songs":
-			response = commands.ListSongs()
-		}
-
-		ws.WriteJSON(response)
+		processCommand(ws)
 	}
 }
