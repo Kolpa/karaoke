@@ -1,2 +1,4 @@
+github.com/adrg/libvlc-go v0.0.0-20191105210939-8fd26894baa1 h1:ahbRuYc2EamP+vUncS7rePf3N/vTIfgYdtDaWLtfchc=
+github.com/adrg/libvlc-go v0.0.0-20191105210939-8fd26894baa1/go.mod h1:4ZdwCxweeh35Pwc6W1TLVXIfRMJ16GHxfkaU+ItibDA=
 github.com/gorilla/websocket v1.4.1 h1:q7AeDBpnBk8AogcD4DSag/Ukw/KV+YhzLj2bP5HvKCM=
 github.com/gorilla/websocket v1.4.1/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
