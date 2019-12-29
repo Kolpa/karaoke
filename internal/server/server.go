@@ -35,6 +35,8 @@ func processCommand(ws *websocket.Conn) {
 		response = commands.GetQueue()
 	case "skip_song":
 		response = commands.SkipSong()
+	case "current_song":
+		response = commands.GetCurrentSong()
 	}
 
 	ws.WriteJSON(response)

@@ -1,10 +1,11 @@
 package player
 
 import "log"
-import vlc "github.com/adrg/libvlc-go"
+import "github.com/adrg/libvlc-go"
 
 var listPlayer *vlc.Player
 var playbackQueue = PlaybackQueue{}
+var currentSong *string
 
 //Initialize sets up the vlc player runtime
 func Initialize() {
@@ -43,6 +44,8 @@ func fetchAndPlay() {
 		return
 	}
 
+	currentSong = song
+
 	listPlayer.LoadMediaFromPath(*song)
 	listPlayer.Play()
 }
@@ -64,4 +67,9 @@ func SkipSong() {
 //GetCurrentQueue returns the current queue
 func GetCurrentQueue() []string {
 	return playbackQueue.songs
+}
+
+//GetCurrentSong returns the currently playing song
+func GetCurrentSong() string {
+	return *currentSong
 }
