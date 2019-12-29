@@ -11,7 +11,7 @@ type ListSongsResponse struct {
 
 //ListSongs returns a SongResponse object containing all songs in current folder
 func ListSongs() ListSongsResponse {
-	matches, err := filepath.Glob("*.mp3")
+	matches, err := filepath.Glob("/mnt/c/Users/kolya/Downloads/Rigmar Chart Busters Karaoke CDGMP3/*.mp3")
 
 	if err != nil {
 		return ListSongsResponse{
@@ -19,10 +19,6 @@ func ListSongs() ListSongsResponse {
 			Status:  "error",
 			Songs:   nil,
 		}
-	}
-
-	for i, songFile := range matches {
-		matches[i] = filepath.Base(songFile)
 	}
 
 	return ListSongsResponse{
