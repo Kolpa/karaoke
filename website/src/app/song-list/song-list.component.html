@@ -1,0 +1,6 @@
+<button (click)="refresh()">Refresh</button>
+<ul>
+    <li *ngFor="let song of songs" (click)="onSongClick(song)">
+        {{song}}
+    </li>
+</ul>
