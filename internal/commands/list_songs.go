@@ -2,19 +2,19 @@ package commands
 
 import "path/filepath"
 
-//SongResponse Describes a api response listing songs
-type SongResponse struct {
+//ListSongsResponse Describes a api response listing songs
+type ListSongsResponse struct {
 	Command string
 	Status  string
 	Songs   []string
 }
 
 //ListSongs returns a SongResponse object containing all songs in current folder
-func ListSongs() SongResponse {
+func ListSongs() ListSongsResponse {
 	matches, err := filepath.Glob("*.mp3")
 
 	if err != nil {
-		return SongResponse{
+		return ListSongsResponse{
 			Command: "list_songs",
 			Status:  "error",
 			Songs:   nil,
@@ -25,7 +25,7 @@ func ListSongs() SongResponse {
 		matches[i] = filepath.Base(songFile)
 	}
 
-	return SongResponse{
+	return ListSongsResponse{
 		Command: "list_songs",
 		Status:  "ok",
 		Songs:   matches,

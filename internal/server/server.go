@@ -29,6 +29,8 @@ func processCommand(ws *websocket.Conn) {
 	switch command.Command {
 	case "list_songs":
 		response = commands.ListSongs()
+	case "add_song":
+		response = commands.AddSong(command.Arguments)
 	}
 
 	ws.WriteJSON(response)
