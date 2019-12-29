@@ -9,7 +9,7 @@ type AddSongResponse struct {
 	Status  string
 }
 
-//AddSong returns a AddSongResponse object containing all songs in current folder
+//AddSong adds a song to the playlist
 func AddSong(arguments interface{}) AddSongResponse {
 	songName, ok := arguments.(string)
 
