@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
     <div style="text-align:center" class="content">
       <h1>
         Welcome to {{title}}!
-        <app-now-playing></app-now-playing>
       </h1>
+      <app-now-playing></app-now-playing>
+      <app-queue></app-queue>
     </div>
     <app-song-list></app-song-list>
   `,
