@@ -71,5 +71,8 @@ func GetCurrentQueue() []string {
 
 //GetCurrentSong returns the currently playing song
 func GetCurrentSong() string {
+	if (currentSong == nil) {
+		return ""
+	}
 	return *currentSong
 }
