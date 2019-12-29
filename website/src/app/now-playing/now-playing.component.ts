@@ -25,4 +25,8 @@ export class NowPlayingComponent implements OnInit {
     }, 1000);
   }
 
+  skipSong() {
+    this.socketService.skipSong();
+  }
+
 }
