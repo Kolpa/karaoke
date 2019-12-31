@@ -1,5 +1,6 @@
 package commands
 
+import "os"
 import "path/filepath"
 
 //ListSongsResponse Describes a api response listing songs
@@ -11,7 +12,9 @@ type ListSongsResponse struct {
 
 //ListSongs returns a SongResponse object containing all songs in current folder
 func ListSongs() ListSongsResponse {
-	matches, err := filepath.Glob("/mnt/c/Users/kolya/Downloads/Rigmar Chart Busters Karaoke CDGMP3/*.mp3")
+	var fileRoot = os.Getenv("SONG_ROOT")
+
+	matches, err := filepath.Glob(fileRoot + "/*.mp3")
 
 	if err != nil {
 		return ListSongsResponse{
