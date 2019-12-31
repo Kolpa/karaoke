@@ -1,6 +1,27 @@
-<button (click)="refresh()">Refresh</button>
-<ul>
-    <li *ngFor="let song of songs" (click)="onSongClick(song)">
-        {{song}}
-    </li>
-</ul>
+<mat-form-field>
+  <input
+    matInput
+    (keyup)="applyFilter($event.target.value)"
+    placeholder="Filter"
+  />
+</mat-form-field>
+<table mat-table [dataSource]="songDataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="artist">
+    <th mat-header-cell *matHeaderCellDef>Artist</th>
+    <td mat-cell *matCellDef="let song">{{ song.artist }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let song">{{ song.title }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="rowSelected(row)"
+  ></tr>
+</table>
+
+<mat-paginator [pageSize]="[10]" showFirstLastButtons></mat-paginator>
