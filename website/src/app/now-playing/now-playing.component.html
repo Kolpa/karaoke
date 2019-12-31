@@ -1,2 +1,6 @@
-<p>Now Playing: </p><p>{{currentSong}}</p>
-<button (click)="skipSong()">Skip Song</button>
+<div class="now-playing">
+  <p *ngIf="currentSong">{{ currentSong.artist }} - {{ currentSong.title }}</p>
+  <button mat-button color="primary" (click)="skipSong()">
+    Skip Song
+  </button>
+</div>
