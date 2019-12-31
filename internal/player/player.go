@@ -39,10 +39,12 @@ func endOfSongCallback(event vlc.Event, userData interface{}) {
 }
 
 func fetchAndPlay() {
-	song := playbackQueue.Dequeue()
-	if song == nil {
+	if playbackQueue.IsEmpty() {
+		currentSong = nil
 		return
 	}
+
+	song := playbackQueue.Dequeue()
 
 	currentSong = song
 
@@ -71,7 +73,7 @@ func GetCurrentQueue() []string {
 
 //GetCurrentSong returns the currently playing song
 func GetCurrentSong() string {
-	if (currentSong == nil) {
+	if currentSong == nil {
 		return ""
 	}
 	return *currentSong
