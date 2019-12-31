@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { webSocket, WebSocketSubject } from "rxjs/webSocket";
 import { Observable } from "rxjs";
 import { map, filter } from "rxjs/operators";
-import { basename } from "path";
+import { basename } from "path-browserify";
 
 const buildWSURL = () =>
   (window.location.protocol === "https:" ? "wss://" : "ws://") +
@@ -25,8 +25,8 @@ export class SocketService {
   public getQueue$: Observable<any>;
 
   constructor() {
-    //this.socket = webSocket(buildWSURL());
-    this.socket = webSocket("ws://localhost:8080");
+    this.socket = webSocket(buildWSURL());
+    //this.socket = webSocket("ws://localhost:8080");
 
     this.listSongs$ = this.socket
       .multiplex(
