@@ -14,10 +14,8 @@ export class NowPlayingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.socketService.currentSong$.subscribe(msg => {
-      if (msg.Status === "ok") {
-        this.currentSong = msg.Song;
-      }
+    this.socketService.currentSong$.subscribe(song => {
+      this.currentSong = song;
     });
 
     setInterval(() => {

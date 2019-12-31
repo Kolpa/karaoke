@@ -15,9 +15,7 @@ export class SongListComponent implements OnInit {
 
   ngOnInit() {
     this.socketService.listSongs$.subscribe(msg => {
-      if (msg.Status === "ok") {
-        this.songs = msg.Songs;
-      }
+        this.songs = msg;
     });
 
     this.socketService.listSongs();
