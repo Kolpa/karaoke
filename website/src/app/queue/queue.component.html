@@ -1,6 +1,10 @@
-<p>Up Next</p>
-<ul>
-    <li *ngFor="let song of songs">
-        {{song}}
-    </li>
-</ul>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Up Next
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <li *ngFor="let song of songs">
+    {{ song }}
+  </li>
+</mat-expansion-panel>

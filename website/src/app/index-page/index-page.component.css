@@ -1,6 +1,15 @@
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.main-container {
+  margin-top: 1em;
+  display: flex;
+  align-content: stretch;
+}
+
+app-song-list {
+  flex: 1;
+  margin: 1em;
+}
+
+app-queue {
+  flex: 1;
+  margin: 1em;
 }

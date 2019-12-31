@@ -2,7 +2,10 @@
   <span>Karaoke Boy</span>
 </mat-toolbar>
 
-<app-song-list></app-song-list>
+<div class="main-container">
+  <app-song-list></app-song-list>
+  <app-queue *ngIf="showQueue"></app-queue>
+</div>
 
 <footer>
   <app-now-playing></app-now-playing>
